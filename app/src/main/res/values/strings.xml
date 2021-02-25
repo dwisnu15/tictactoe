@@ -2,4 +2,7 @@
     <string name="app_name">Tictactoe</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_player1">Player 1 Name</string>
+    <string name="hint_player2">Player 2 Name</string>
+    <string name="loading_text">Loading…</string>
 </resources>
