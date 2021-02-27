@@ -88,6 +88,7 @@ class BoardFragment : Fragment() {
         }
     }
 
+    //initialize all board button
     private fun initButton(row: Int, column: Int): Button {
         val btn: Button = requireView().findViewById(
             resources.getIdentifier(
@@ -119,11 +120,13 @@ class BoardFragment : Fragment() {
         Log.d("Round count", "$roundCount")
     }
 
+    //switch player
     private fun switchPlayer() {
         player1Turn = !player1Turn
         setTurnText()
     }
 
+    //set the current player turn text
     private fun setTurnText() {
         if (player1Turn) {
             playerTurn.text = "$player1Name Turn"
@@ -132,6 +135,7 @@ class BoardFragment : Fragment() {
         }
     }
 
+    //when it is a draw
     private fun draw() {
         gameStatus.text = "It's a draw!"
         gameStatus.isVisible = true
@@ -147,7 +151,10 @@ class BoardFragment : Fragment() {
             gameStatus.text = "$player2Name Wins"
         }
         gameStatus.isVisible = true
+        //update the score
         updateScore()
+        //disable board button
+        enableAllBoardButton(false)
     }
 
     //update players score textview
@@ -179,15 +186,15 @@ class BoardFragment : Fragment() {
         roundCount = 0
         player1Turn = true
         setTurnText()
-        enableAllBoardButton()
+        enableAllBoardButton(true)
         gameStatus.isVisible = false
     }
 
     //self explanatory
-    private fun enableAllBoardButton() {
+    private fun enableAllBoardButton(check : Boolean) {
         buttons.forEach { row ->
             row.forEach { column ->
-                column.isClickable = true
+                column.isClickable = check
             }
         }
     }
